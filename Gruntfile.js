@@ -38,19 +38,25 @@ module.exports = function(grunt) {
           livereload: '<%= connect.options.livereload %>'
         }
       },
+      js: {
+        files: [
+          '<%= config.src %>/**/*.js'
+        ],
+        tasks: ['injector']
+      }
     },
     //--------
     // The actual grunt server settings
     connect: {
       options: {
-        port: 9000,
+        port: 8080,
         // Change this to '0.0.0.0' to access the server from outside.
         hostname: '127.0.0.1',
-        livereload: 35729
+        livereload: 35731
       },
       livereload: {
         options: {
-          open: 'http://127.0.0.1:9000',
+          open: 'http://127.0.0.1:8080',
           base: [
             '<%= config.app %>',
             '<%= config.src %>',
@@ -69,7 +75,7 @@ module.exports = function(grunt) {
       },
       dist: {
         options: {
-          open: 'http://127.0.0.1:9000',
+          open: 'http://127.0.0.1:8080',
           base: [
             '<%= config.dist %>',
             '.app'
@@ -116,6 +122,30 @@ module.exports = function(grunt) {
       }
     },
     //--------
+    // Injector
+    //--------
+    injector: {
+      options: {},
+      // Injects sample application JS files into index.html
+      js: {
+        options: {
+          transform: function(filePath) {
+            filePath = filePath.replace('/lib/', '');
+            return '<script src="' + filePath + '"></script>';
+          },
+          starttag: '<!-- injector:js -->',
+          endtag: '<!-- endinjector -->'
+        },
+        files: {
+          '<%= config.app %>/index.html': [
+            [
+              '<%= config.src %>/**/*.js',
+              '!<%= config.src %>/ng-data-blocks.js'
+            ]
+          ]
+        }
+      },
+    },
 
   });
 
@@ -127,6 +157,8 @@ module.exports = function(grunt) {
     grunt.task.run([
       'clean:server',
       'wiredep',
+
+      'injector',
 
       'connect:livereload',
 

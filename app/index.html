@@ -8,27 +8,36 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Flow</title>
+    <title>Ng Data Blocks</title>
     <meta http-equiv="X-UA-Compatible" content="IE=9,10,11" />
     <meta name="description" content="" />
     <meta name="viewport" content="width=320" />
     <meta name="viewport" content="minimum-scale=1,maximum-scale=1,user-scalable=no,width=device-width,initial-scale=1.0" />
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
-    <!-- build:css({.tmp,app}) styles/ng-data-blocks.css -->
     <!-- bower:css -->
     <!-- endbower -->
-    <!-- endbuild -->
 </head>
 
-<body>
-	<!-- build:js({.tmp,app}) scripts/ng-data-blocks.js -->
+<body ng-app="samples-module">
     <!-- bower:js -->
     <script src="bower_components/angular/angular.js"></script>
     <!-- endbower -->
+
+    <!-- build:js({.tmp,app}) scripts/ng-data-blocks.js -->
+    <script src="ng-data-blocks.js"></script>
+    <!-- injector:js -->
+    <script src="ng-data-blocks.controller.js"></script>
+    <!-- endinjector -->
     <!-- endbuild -->
 
-	AAA
+    <!-- Sample Scrips -->
+    <script src="scripts/smaples-controller.js"></script>
+
+    <div ng-controller="samples-controller">
+        <ng-data-blocks data="imageBloc"></ng-data-blocks>
+    </div>
+
 </body>
 
 </html>
