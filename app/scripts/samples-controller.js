@@ -6,11 +6,13 @@ angular.module('samples-module', [
   .controller('samples-controller', [
     '$scope',
 
-    'sample-encoded-image',
+    'sample-encoded-image-a',
 
-    function($scope, sampleEncodedImage) {
+    function($scope, sampleEncodedImageA) {
 
+      // Image url example
       $scope.imageBloc = {
+        title: 'Image Url',
         type: 'image',
         name: 'smapleImage',
         value: 'images/mageawakening.png',
@@ -20,16 +22,20 @@ angular.module('samples-module', [
         }
       };
 
+      // Encoded imagem example
       $scope.image64Bloc = {
+        title: 'Image 64',
         type: 'image',
         name: 'smapleImage',
-        value: 'data:image/jpg;base64,' + sampleEncodedImage,
+        value: sampleEncodedImageA,
         css: {
           border: '1px solid red',
           height: '300px',
           padding: '4px'
         }
       };
+
+      // TODO: get and set to each created block?
 
     }
   ]);

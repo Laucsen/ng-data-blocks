@@ -15,6 +15,7 @@
     <meta name="viewport" content="minimum-scale=1,maximum-scale=1,user-scalable=no,width=device-width,initial-scale=1.0" />
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
     <!-- bower:css -->
     <!-- endbower -->
 </head>
@@ -24,7 +25,7 @@
     <script src="bower_components/angular/angular.js"></script>
     <!-- endbower -->
 
-    <!-- build:js({.tmp,app}) scripts/ng-data-blocks.js -->
+    <!-- build:js({.tmp,app}) ng-data-blocks.js -->
     <script src="ng-data-blocks.js"></script>
     <!-- injector:js -->
     <script src="ng-data-blocks.controller.js"></script>
@@ -38,8 +39,25 @@
 
 
     <div ng-controller="samples-controller">
-        <ng-data-blocks data="imageBloc"></ng-data-blocks>
-        <ng-data-blocks data="image64Bloc"></ng-data-blocks>
+        <div class="bs-docs-section">
+            <h1 id="image-overview" class="page-header">
+                <a class="anchorjs-link " href="#image-overview" aria-label="Anchor link for: image overview" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; position: absolute; margin-left: -1em; padding-right: 0.5em;"></a>
+                Images
+            </h1>
+            <p class="lead">Blocks to manipulate images.</p>
+            <h2 id="overview-doctype">
+                <a class="anchorjs-link " href="#overview-doctype" aria-label="Anchor link for: overview doctype" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; position: absolute; margin-left: -1em; padding-right: 0.5em;"></a>
+                URL Image
+            </h2>
+            <div>
+                <span><ng-data-blocks data="imageBloc"></ng-data-blocks></span>
+                <span>{{imageBloc}}</span>
+            </div>
+        </div>
+
+        <div>
+            <ng-data-blocks data="image64Bloc"></ng-data-blocks>
+        </div>
     </div>
 
 </body>
