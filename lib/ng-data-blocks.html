@@ -1,0 +1,13 @@
+<div class="ng-data-blocks">
+
+	<!-- Images -->
+	<div ng-if="check(data, 'image')">
+		<img ng-src="{{data.value}}" ng-style="data.css">
+	</div>
+
+	<!-- Unavailable Types -->
+	<div ng-if="!isAvailable(data.type)">
+		Unavailable Type!
+	</div>
+
+</div>

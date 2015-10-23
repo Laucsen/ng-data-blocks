@@ -12,6 +12,7 @@ module.exports = function(grunt) {
 
     //--------
     config: {
+      name: require('./bower').name,
       version: require('./bower').version,
       app: 'app',
       dist: 'dist',
@@ -43,6 +44,15 @@ module.exports = function(grunt) {
           '<%= config.src %>/**/*.js'
         ],
         tasks: ['injector']
+      },
+      html2js: {
+        files: [
+          '<%= config.src %>/{,**/}*.html'
+        ],
+        tasks: ['html2js', 'injector'],
+        options: {
+          livereload: '<%= connect.options.livereload %>'
+        }
       }
     },
     //--------
@@ -131,6 +141,7 @@ module.exports = function(grunt) {
         options: {
           transform: function(filePath) {
             filePath = filePath.replace('/lib/', '');
+            filePath = filePath.replace('/.tmp/', '');
             return '<script src="' + filePath + '"></script>';
           },
           starttag: '<!-- injector:js -->',
@@ -140,12 +151,44 @@ module.exports = function(grunt) {
           '<%= config.app %>/index.html': [
             [
               '<%= config.src %>/**/*.js',
+              '.tmp/scripts/**/*.js',
               '!<%= config.src %>/ng-data-blocks.js'
             ]
           ]
         }
       },
     },
+    //--------
+    // Task to create JS files to cache all application views.
+    html2js: {
+      options: {
+        base: '<%= config.src %>',
+        target: 'js',
+        singleModule: true,
+        quoteChar: '\'',
+        fileHeaderString: '// --- Start of Template Session ---',
+        fileFooterString: '// --- End of Template Session ---',
+        htmlmin: {
+          collapseBooleanAttributes: true,
+          collapseWhitespace: true,
+          removeAttributeQuotes: true,
+          removeComments: true,
+          removeEmptyAttributes: true,
+          removeRedundantAttributes: true,
+          removeScriptTypeAttributes: true,
+          removeStyleLinkTypeAttributes: true
+        }
+      },
+      build: {
+        options: {
+          module: '<%= config.name %>.templates',
+          useStrict: true
+        },
+        src: ['<%= config.src %>/{,**/}*.html'],
+        dest: '.tmp/scripts/<%= config.name %>-templates.js'
+      }
+    },
+    //--------
 
   });
 
@@ -157,6 +200,8 @@ module.exports = function(grunt) {
     grunt.task.run([
       'clean:server',
       'wiredep',
+
+      'html2js',
 
       'injector',
 
