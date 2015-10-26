@@ -25,6 +25,9 @@
     <script src="bower_components/angular/angular.js"></script>
     <!-- endbower -->
 
+    <!-- DEV Libraries -->
+    <!-- End Dev -->
+
     <!-- build:js({.tmp,app}) ng-data-blocks.js -->
     <script src="ng-data-blocks.js"></script>
     <!-- injector:js -->
@@ -36,6 +39,20 @@
     <!-- Sample Scrips -->
     <script src="scripts/samples-controller.js"></script>
     <script src="scripts/samples-large-contants.js"></script>
+
+    <style type="text/css">
+        .session {
+            width: 100%;
+        }
+        .left {
+            width: 50%;
+            background: red;
+            float: left;
+        }
+        .right {
+            background: black;
+        }
+    </style>
 
 
     <div ng-controller="samples-controller">
@@ -49,15 +66,19 @@
                 <a class="anchorjs-link " href="#overview-doctype" aria-label="Anchor link for: overview doctype" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; position: absolute; margin-left: -1em; padding-right: 0.5em;"></a>
                 URL Image
             </h2>
-            <div>
-                <span><ng-data-blocks data="imageBloc"></ng-data-blocks></span>
-                <span>{{imageBloc}}</span>
+            <div class="session">
+                <div class="left">
+                    <ng-data-blocks data="imageBloc">
+                </ng-data-blocks></div>
+                <div class="container right">
+                    <-- -->
+                </div>
             </div>
         </div>
 
-        <div>
+        <!-- <div>
             <ng-data-blocks data="image64Bloc"></ng-data-blocks>
-        </div>
+        </div> -->
     </div>
 
 </body>

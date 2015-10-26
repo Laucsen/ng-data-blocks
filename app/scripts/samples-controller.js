@@ -10,18 +10,53 @@ angular.module('samples-module', [
 
     function($scope, sampleEncodedImageA) {
 
+      //-----------------
       // Image url example
+      $scope.imageSchema = {
+        type: 'object',
+        title: 'Image Url',
+        properties: {
+          title: {
+            type: 'string',
+            title: 'Item Name'
+            // required: true,
+            // minLength: 1
+          },
+          type: {
+            type: 'string',
+            title: 'Type',
+            required: true,
+            min: 1
+          },
+          name: {
+            type: 'string',
+            title: 'Name',
+            required: true,
+            min: 1
+          },
+          value: {
+            type: 'string',
+            title: 'Value'
+          },
+          style: {
+            type: 'object',
+            title: 'Style'
+          }
+        }
+      };
       $scope.imageBloc = {
         title: 'Image Url',
         type: 'image',
         name: 'smapleImage',
         value: 'images/mageawakening.png',
-        css: {
+        style: {
           border: '1px solid red',
           height: '150px'
         }
       };
+      //-----------------
 
+      //-----------------
       // Encoded imagem example
       $scope.image64Bloc = {
         title: 'Image 64',
@@ -34,6 +69,7 @@ angular.module('samples-module', [
           padding: '4px'
         }
       };
+      //-----------------
 
       // TODO: get and set to each created block?
 
