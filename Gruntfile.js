@@ -32,7 +32,9 @@ module.exports = function(grunt) {
       },
       dev: {
         files: [
-          '<%= config.app %>/**/*.*'
+          '<%= config.app %>/index.hyml',
+          '.tmp/styles/{,**/}*.css',
+          '<%= config.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
         ],
         tasks: ['newer:jshint'],
         options: {
@@ -43,17 +45,44 @@ module.exports = function(grunt) {
         files: [
           '<%= config.src %>/**/*.js'
         ],
-        tasks: ['injector']
+        tasks: ['injector:js'],
+        options: {
+          livereload: '<%= connect.options.livereload %>'
+        }
+      },
+      examplesjs: {
+        files: [
+          '<%= config.app %>/**/*.js'
+        ],
+        tasks: ['injector:examplesjs'],
+        options: {
+          livereload: '<%= connect.options.livereload %>'
+        }
       },
       html2js: {
         files: [
           '<%= config.src %>/{,**/}*.html'
         ],
-        tasks: ['html2js', 'injector'],
+        tasks: ['html2js.build', 'injector:js'],
         options: {
           livereload: '<%= connect.options.livereload %>'
         }
-      }
+      },
+      html2jsExamples: {
+        files: [
+          '<%= config.app %>/{,**/}*.html'
+        ],
+        tasks: ['html2js.examples', 'injector:examplesjs'],
+        options: {
+          livereload: '<%= connect.options.livereload %>'
+        }
+      },
+      compass: {
+        files: [
+          '<%= config.app %>/scripts/**/*.scss'
+        ],
+        tasks: ['compass:server', 'autoprefixer']
+      },
     },
     //--------
     // The actual grunt server settings
@@ -135,15 +164,17 @@ module.exports = function(grunt) {
     // Injector
     //--------
     injector: {
-      options: {},
+      options: {
+        transform: function(filePath) {
+          filePath = filePath.replace('/lib/', '');
+          filePath = filePath.replace('/app/', '');
+          filePath = filePath.replace('/.tmp/', '');
+          return '<script src="' + filePath + '"></script>';
+        }
+      },
       // Injects sample application JS files into index.html
       js: {
         options: {
-          transform: function(filePath) {
-            filePath = filePath.replace('/lib/', '');
-            filePath = filePath.replace('/.tmp/', '');
-            return '<script src="' + filePath + '"></script>';
-          },
           starttag: '<!-- injector:js -->',
           endtag: '<!-- endinjector -->'
         },
@@ -157,6 +188,20 @@ module.exports = function(grunt) {
           ]
         }
       },
+      examplesjs: {
+        options: {
+          starttag: '<!-- injector:examplesjs -->',
+          endtag: '<!-- endinjector -->'
+        },
+        files: {
+          '<%= config.app %>/index.html': [
+            [
+              '<%= config.app %>/scripts/**/*.js',
+              '.tmp/scripts/ng-data-blocks.examples-templates.js'
+            ]
+          ]
+        }
+      }
     },
     //--------
     // Task to create JS files to cache all application views.
@@ -186,6 +231,76 @@ module.exports = function(grunt) {
         },
         src: ['<%= config.src %>/{,**/}*.html'],
         dest: '.tmp/scripts/<%= config.name %>-templates.js'
+      },
+      examples: {
+        base: '<%= config.app %>',
+        options: {
+          module: '<%= config.name %>.examples.templates',
+          useStrict: true
+        },
+        src: ['<%= config.app %>/scripts/{,**/}*.html'],
+        dest: '.tmp/scripts/<%= config.name %>.examples-templates.js'
+      }
+    },
+    //--------
+    // Compiles Sass to CSS and generates necessary files if requested
+    compass: {
+      options: {
+        sassDir: '<%= config.app %>/scripts',
+        cssDir: '.tmp/styles',
+        // generatedImagesDir: '.tmp/images/generated',
+        // javascriptsDir: '<%= yeoman.src %>/scripts',
+        // fontsDir: '<%= yeoman.src %>/assets/fonts',
+        // importPath: [
+        //   './<%= yeoman.app %>/bower_components',
+        //   '.tmp/scss'
+        // ],
+        // httpGeneratedImagesPath: '/images/generated',
+        // httpFontsPath: '/assets/fonts',
+        // relativeAssets: false,
+        // assetCacheBuster: false,
+        // raw: 'Sass::Script::Number.precision = 10\n'
+      },
+      server: {
+        options: {
+          // debugInfo: true,
+          // imagesDir: '<%= config.app %>/assets/images',
+          // httpImagesPath: '../assets/images'
+        }
+      },
+      dist: {
+        options: {}
+      }
+    },
+    //--------
+    // Run some tasks in parallel to speed up the build process
+    concurrent: {
+      limit: 1,
+      server: [
+        'compass:server'
+      ],
+      test: [
+        'compass'
+      ],
+      dist: [
+        'compass:dist',
+        'imagemin',
+        'svgmin'
+      ]
+    },
+    //--------
+    // Add vendor prefixed styles
+    autoprefixer: {
+      options: {
+        browsers: ['last 1 version']
+      },
+      dist: {
+        files: [{
+          expand: true,
+          cwd: '.tmp/styles/',
+          src: '{,*/}*.css',
+          dest: '.tmp/styles/'
+        }]
       }
     },
     //--------
@@ -204,6 +319,9 @@ module.exports = function(grunt) {
       'html2js',
 
       'injector',
+
+      'concurrent:server',
+      'autoprefixer',
 
       'connect:livereload',
 
