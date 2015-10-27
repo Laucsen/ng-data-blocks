@@ -1,0 +1,49 @@
+<div>
+    <style type="text/css">
+        .session {
+            width: 100%;
+            margin: 0 auto;
+            padding: 4px;
+        }
+        .left {
+            color: white;
+            width: 50%;
+            display: inline-block;
+            vertical-align: top;
+        }
+        .right {
+            color: white;
+            width: 49%;
+            display: inline-block;
+            vertical-align: top;
+        }
+        .actionArea {
+            padding-bottom: 20px;
+        }
+    </style>
+
+    <h2 id="overview-doctype">
+        <a class="anchorjs-link " href="#overview-doctype" aria-label="Anchor link for: overview doctype" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; position: absolute; margin-left: -1em; padding-right: 0.5em;"></a>
+        {{siTitle}}
+    </h2>
+    <div class="session well">
+        <div class="left">
+            <ng-data-blocks data="siData">
+            </ng-data-blocks>
+        </div>
+        <div class="right">
+            <div ng-jsoneditor ng-model="siData" options="siOptions" class="jsonArea" style="height: 220px;"></div>
+        </div>
+        <div class="actionArea" >
+            <div ng-if="siActions">
+
+                <div ng-repeat="(action,actionsObj) in siActions">
+                    <label for="dataAct">{{actionsObj.title}}: </label>
+                    <br>
+                    <select name="dataAct" ng-model="siData[action]" ng-options="action for action in actionsObj.values"></select>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

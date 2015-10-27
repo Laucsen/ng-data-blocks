@@ -40,31 +40,12 @@
     <!-- endbuild -->
 
     <!-- Sample Scrips -->
+    <!-- TODO: Inject This -->
     <script src="scripts/samples-controller.js"></script>
+    <script src="scripts/samples-directive.js"></script>
     <script src="scripts/samples-large-contants.js"></script>
 
-    <style type="text/css">
-        .session {
-            width: 100%;
-            margin: 0 auto;
-            padding: 0;
-        }
-        .left {
-            color: white;
-            width: 49%;
-            display: inline-block;
-            vertical-align: top;
-        }
-        .right {
-            color: white;
-            width: 50%;
-            display: inline-block;
-            vertical-align: top;
-        }
-        .jsonArea {
 
-        }
-    </style>
 
 
     <div ng-controller="samples-controller">
@@ -74,34 +55,20 @@
                 Images
             </h1>
             <p class="lead">Blocks to manipulate images.</p>
-            <div>
-                <h2 id="overview-doctype">
-                    <a class="anchorjs-link " href="#overview-doctype" aria-label="Anchor link for: overview doctype" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; position: absolute; margin-left: -1em; padding-right: 0.5em;"></a>
-                    URL Image
-                </h2>
-                <div class="session">
-                    <div class="left">
-                        <ng-data-blocks data="imageBloc">
-                    </ng-data-blocks></div>
-                    <div class="container right">
-                        <div ng-jsoneditor ng-model="imageBloc" options="options" class="jsonArea" style="height: 220px;"></div>
-                    </div>
-                </div>
-            </div>
-            <div>
-                <h2 id="overview-doctype">
-                    <a class="anchorjs-link " href="#overview-doctype" aria-label="Anchor link for: overview doctype" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; position: absolute; margin-left: -1em; padding-right: 0.5em;"></a>
-                    Base64 Image
-                </h2>
-                <div class="session">
-                    <div class="left">
-                        <ng-data-blocks data="image64Bloc"></ng-data-blocks>
-                    </ng-data-blocks></div>
-                    <div class="container right">
-                        <div ng-jsoneditor ng-model="image64Bloc" options="options" class="jsonArea" style="height: 220px;"></div>
-                    </div>
-                </div>
-            </div>
+
+            <sample-item
+                si-title="URL Image"
+                si-options="options"
+                si-data="imageBloc"
+                si-actions="imageBlockOptions">
+            </sample-item>
+
+            <sample-item
+                si-title="Base64 Image"
+                si-options="options"
+                si-data="image64Bloc">
+            </sample-item>
+
         </div>
 
     </div>

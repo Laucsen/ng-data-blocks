@@ -24,10 +24,20 @@ angular.module('samples-module', [
         name: 'smapleImage',
         value: 'images/mageawakening.png',
         style: {
-          border: '1px solid red',
+          border: '2px solid gray',
           height: '150px'
         }
       };
+      $scope.imageBlockOptions = {
+        value: {
+          title: 'Select a Image to dynamic change of values',
+          values: [
+            'images/mageawakening.png',
+            'images/wod.png'
+          ]
+        }
+      };
+      //-----------------
       //-----------------
 
       //-----------------
