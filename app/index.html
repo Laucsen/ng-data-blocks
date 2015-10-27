@@ -16,6 +16,7 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="bower_components/jsoneditor/dist/jsoneditor.min.css" />
     <!-- bower:css -->
     <!-- endbower -->
 </head>
@@ -26,6 +27,8 @@
     <!-- endbower -->
 
     <!-- DEV Libraries -->
+    <script src="bower_components/jsoneditor/dist/jsoneditor.min.js"></script>
+    <script src="bower_components/ng-jsoneditor/ng-jsoneditor.js"></script>
     <!-- End Dev -->
 
     <!-- build:js({.tmp,app}) ng-data-blocks.js -->
@@ -43,14 +46,22 @@
     <style type="text/css">
         .session {
             width: 100%;
+            padding: 4px;
         }
         .left {
             width: 50%;
-            background: red;
             float: left;
+            padding: 4px;
+            border: 1px solid black;
         }
         .right {
-            background: black;
+            width: 50%;
+            float: left;
+            padding: 4px;
+            border: 1px solid black;
+        }
+        .jsonArea {
+
         }
     </style>
 
@@ -71,14 +82,14 @@
                     <ng-data-blocks data="imageBloc">
                 </ng-data-blocks></div>
                 <div class="container right">
-                    <-- -->
+                    <div ng-jsoneditor ng-model="imageBloc" options="options" class="jsonArea"></div>
                 </div>
             </div>
         </div>
 
-        <!-- <div>
+        <div>
             <ng-data-blocks data="image64Bloc"></ng-data-blocks>
-        </div> -->
+        </div>
     </div>
 
 </body>

@@ -1,7 +1,9 @@
 'use strict';
 
 angular.module('samples-module', [
-    'ng-data-blocks'
+    'ng-data-blocks',
+
+    'ng.jsoneditor'
   ])
   .controller('samples-controller', [
     '$scope',
@@ -10,40 +12,12 @@ angular.module('samples-module', [
 
     function($scope, sampleEncodedImageA) {
 
+      $scope.options = {
+        mode: 'tree'
+      };
+
       //-----------------
       // Image url example
-      $scope.imageSchema = {
-        type: 'object',
-        title: 'Image Url',
-        properties: {
-          title: {
-            type: 'string',
-            title: 'Item Name'
-            // required: true,
-            // minLength: 1
-          },
-          type: {
-            type: 'string',
-            title: 'Type',
-            required: true,
-            min: 1
-          },
-          name: {
-            type: 'string',
-            title: 'Name',
-            required: true,
-            min: 1
-          },
-          value: {
-            type: 'string',
-            title: 'Value'
-          },
-          style: {
-            type: 'object',
-            title: 'Style'
-          }
-        }
-      };
       $scope.imageBloc = {
         title: 'Image Url',
         type: 'image',
