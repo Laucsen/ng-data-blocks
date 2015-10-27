@@ -37,9 +37,8 @@ angular.module('samples-module', [
         type: 'image',
         name: 'smapleImage',
         value: sampleEncodedImageA,
-        css: {
-          border: '1px solid red',
-          height: '300px',
+        style: {
+          height: '100px',
           padding: '4px'
         }
       };
