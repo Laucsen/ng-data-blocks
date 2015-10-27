@@ -30,52 +30,55 @@ module.exports = function(grunt) {
       gruntfile: {
         files: ['Gruntfile.js']
       },
-      dev: {
+      livereload: {
+        options: {
+          livereload: '<%= connect.options.livereload %>'
+        },
         files: [
-          '<%= config.app %>/index.hyml',
+          '<%= config.app %>/index.html',
           '.tmp/styles/{,**/}*.css',
-          '<%= config.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
+          '<%= config.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
+        ]
+      },
+      js: {
+        files: [
+          '<%= config.app %>/**/*.js',
+          '<%= config.src %>/**/*.js'
         ],
         tasks: ['newer:jshint'],
         options: {
           livereload: '<%= connect.options.livereload %>'
         }
       },
-      js: {
+      injectorjs: {
         files: [
           '<%= config.src %>/**/*.js'
         ],
-        tasks: ['injector:js'],
-        options: {
-          livereload: '<%= connect.options.livereload %>'
-        }
+        tasks: ['injector:js']
       },
-      examplesjs: {
+      injectorexamplesjs: {
         files: [
           '<%= config.app %>/**/*.js'
         ],
-        tasks: ['injector:examplesjs'],
-        options: {
-          livereload: '<%= connect.options.livereload %>'
-        }
+        tasks: ['newer:jshint', 'injector:examplesjs']
       },
       html2js: {
+        options: {
+          livereload: '<%= connect.options.livereload %>'
+        },
         files: [
           '<%= config.src %>/{,**/}*.html'
         ],
-        tasks: ['html2js.build', 'injector:js'],
-        options: {
-          livereload: '<%= connect.options.livereload %>'
-        }
+        tasks: ['html2js:build', 'injector:js']
       },
       html2jsExamples: {
-        files: [
-          '<%= config.app %>/{,**/}*.html'
-        ],
-        tasks: ['html2js.examples', 'injector:examplesjs'],
         options: {
           livereload: '<%= connect.options.livereload %>'
-        }
+        },
+        files: [
+          '<%= config.app %>/scripts/{,**/}*.html'
+        ],
+        tasks: ['html2js:examples', 'injector:examplesjs']
       },
       compass: {
         files: [
@@ -197,7 +200,8 @@ module.exports = function(grunt) {
           '<%= config.app %>/index.html': [
             [
               '<%= config.app %>/scripts/**/*.js',
-              '.tmp/scripts/ng-data-blocks.examples-templates.js'
+              '.tmp/scripts/ng-data-blocks.examples-templates.js',
+              '!<%= config.app %>/scripts/samples.js'
             ]
           ]
         }

@@ -1,18 +1,14 @@
 'use strict';
 
-angular.module('samples-module', [
-    'ng-data-blocks.examples.templates',
-    
-    'ng-data-blocks',
-
-    'ng.jsoneditor'
-  ])
+angular.module('samples-module')
   .controller('samples-controller', [
     '$scope',
 
     'sample-encoded-image-a',
 
-    function($scope, sampleEncodedImageA) {
+    'Example_ImageUrl',
+
+    function($scope, sampleEncodedImageA, Example_ImageUrl) {
 
       $scope.options = {
         mode: 'tree'
@@ -20,25 +16,8 @@ angular.module('samples-module', [
 
       //-----------------
       // Image url example
-      $scope.imageBloc = {
-        title: 'Image Url',
-        type: 'image',
-        name: 'smapleImage',
-        value: 'images/mageawakening.png',
-        style: {
-          border: '2px solid gray',
-          height: '150px'
-        }
-      };
-      $scope.imageBlockOptions = {
-        value: {
-          title: 'Select a Image to dynamic change of values',
-          values: [
-            'images/mageawakening.png',
-            'images/wod.png'
-          ]
-        }
-      };
+      $scope.imageBloc = Example_ImageUrl.data;
+      $scope.imageBlockOptions = Example_ImageUrl.actions;
       //-----------------
       //-----------------
 
