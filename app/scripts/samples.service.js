@@ -4,24 +4,23 @@ angular.module('samples-module')
   .factory('SamplesService', [
 
     function() {
-      var regions = ['images'];
-
-      var regionsData = {
-        images: {
-          title: 'Images',
-          description: 'Blocks to manipulate images.',
-          examples: [
-            'Example_ImageUrl',
-            'Example_Image64'
-          ]
-        }
-      };
-
+      var regions = [];
+      var regionsData = {};
       var datas = {};
 
       return {
+        createRegion: function(reg) {
+          regions.push(reg);
+        },
         getRegions: function() {
           return regions;
+        },
+        configureRegion: function(reg, regDat) {
+          if (regions.indexOf(reg) === -1) {
+            throw 'Undefined Region: ' + reg;
+          }
+
+          regionsData[reg] = regDat;
         },
         getRegionData: function(region) {
           return regionsData[region];

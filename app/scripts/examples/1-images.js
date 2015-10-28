@@ -44,6 +44,16 @@ angular.module('samples-module')
 
     function(SamplesService, Example_ImageUrl, Example_Image64, sampleEncodedImageA) {
 
+      SamplesService.createRegion('images');
+      SamplesService.configureRegion('images', {
+        title: 'Images',
+        description: 'Blocks to manipulate images.',
+        examples: [
+          'Example_ImageUrl',
+          'Example_Image64'
+        ]
+      });
+
       var i64 = Example_Image64;
       i64.data.value = sampleEncodedImageA;
 

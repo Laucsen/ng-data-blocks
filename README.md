@@ -15,12 +15,20 @@ This link will tell more about it: https://github.com/gruntjs/grunt-contrib-comp
 
 ## TODO LIST ##
 
-1. Label
-2. Input[String]
-3. Horizontal Blocks
-4. Vertical Blocks
-5. Groupbox -> Box with caption
-6. Input[Numeric]
-7. Input[Numeric] -> Max and Min Values (With Validation)
-8. Input[Bulet] -> Like WOD Sheet, with max and min values.
-9. CheckBox
+1. Input[String]
+2. Horizontal Blocks
+3. Vertical Blocks
+4. Groupbox -> Box with caption
+5. Input[Numeric]
+6. Input[Numeric] -> Max and Min Values (With Validation)
+7. Input[Bulet] -> Like WOD Sheet, with max and min values.
+8. CheckBox
+
+1. Change Values Programatically.
+2. Serialize.
+3. Rebuild from JSON String.
+
+1. Tests
+2. Build o Travis
+3. Coverage on Coveralls
+4. Publish on Bower

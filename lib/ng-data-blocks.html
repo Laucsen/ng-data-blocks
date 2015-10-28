@@ -5,6 +5,10 @@
 		<img ng-src="{{data.value}}" ng-style="data.style">
 	</div>
 
+	<div ng-if="check(data, 'label')">
+		<label ng-style="data.style">{{data.value}}</label>
+	</div>
+
 	<!-- Unavailable Types -->
 	<div ng-if="!isAvailable(data.type)">
 		Unavailable Type!
