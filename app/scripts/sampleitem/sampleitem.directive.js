@@ -5,7 +5,7 @@ angular.module('samples-module')
     function() {
       return {
         restrict: 'E',
-        templateUrl: 'scripts/samples.html',
+        templateUrl: 'scripts/sampleitem/sampleitem.html',
         scope: {
           siTitle: '@',
 

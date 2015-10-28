@@ -1,0 +1,17 @@
+<div class="bs-docs-section">
+    <h1 id="image-overview" class="page-header">
+        <a class="anchorjs-link " href="#image-overview" aria-label="Anchor link for: image overview" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; position: absolute; margin-left: -1em; padding-right: 0.5em;"></a>
+        {{regionData.title}}
+    </h1>
+    <p class="lead">{{regionData.description}}</p>
+
+    <sample-item
+        ng-repeat="ex in regionData.examples"
+
+        si-title="{{datas[ex].data.title}}"
+        si-options="options"
+        si-data="datas[ex].data"
+        si-actions="datas[ex].actions">
+    </sample-item>
+
+</div>

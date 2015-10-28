@@ -1,22 +1,6 @@
-.samples {
-    .session {
-        width: 100%;
-        margin: 0 auto;
-        padding: 4px;
-    }
-    .left {
-        color: white;
-        width: 50%;
-        display: inline-block;
-        vertical-align: top;
-    }
-    .right {
-        color: white;
-        width: 49%;
-        display: inline-block;
-        vertical-align: top;
-    }
-    .actionArea {
-        padding-bottom: 20px;
-    }
-}
+/////////////////////////////////////////////////
+// Component styles are injected through grunt
+// injector
+@import 'sampleitem/sampleitem.scss';
+// endinjector
+/////////////////////////////////////////////////

@@ -62,6 +62,13 @@ module.exports = function(grunt) {
         ],
         tasks: ['newer:jshint', 'injector:examplesjs']
       },
+      injectSass: {
+        files: [
+          '!<%= config.app %>/scripts/samples.scss',
+          '<%= config.app %>/scripts/{,**/}*.{scss,sass}'
+        ],
+        tasks: ['injector:sass']
+      },
       html2js: {
         options: {
           livereload: '<%= connect.options.livereload %>'
@@ -205,7 +212,24 @@ module.exports = function(grunt) {
             ]
           ]
         }
-      }
+      },
+      // Inject scss files into pixeon-utils.scss
+      sass: {
+        options: {
+          transform: function(filePath) {
+            filePath = filePath.replace('/app/scripts/', '');
+            return '@import \'' + filePath + '\';';
+          },
+          starttag: '// injector',
+          endtag: '// endinjector'
+        },
+        files: {
+          '<%= config.app %>/scripts/samples.scss': [
+            '<%= config.app %>/scripts/**/*.{scss,sass}',
+            '!<%= config.app %>/scripts/samples.scss'
+          ]
+        }
+      },
     },
     //--------
     // Task to create JS files to cache all application views.
@@ -263,7 +287,7 @@ module.exports = function(grunt) {
         // httpFontsPath: '/assets/fonts',
         // relativeAssets: false,
         // assetCacheBuster: false,
-        // raw: 'Sass::Script::Number.precision = 10\n'
+        // raw: 'Sass:example.scss:Script::Number.precision = 10\n'
       },
       server: {
         options: {
