@@ -15,7 +15,6 @@ This link will tell more about it: https://github.com/gruntjs/grunt-contrib-comp
 
 ## TODO LIST ##
 
-1. Input[String]
 2. Horizontal Blocks
 3. Vertical Blocks
 4. Groupbox -> Box with caption
@@ -32,3 +31,10 @@ This link will tell more about it: https://github.com/gruntjs/grunt-contrib-comp
 2. Build o Travis
 3. Coverage on Coveralls
 4. Publish on Bower
+
+Error control: Schemas to each type.
+1. label
+2. image
+3. input
+4. hblock
+5. ...

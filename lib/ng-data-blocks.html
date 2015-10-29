@@ -9,6 +9,18 @@
 		<label ng-style="data.style">{{data.value}}</label>
 	</div>
 
+	<div ng-if="check(data, 'input')">
+		<input type="text" ng-style="data.style" ng-model="data.value">
+	</div>
+
+	<div ng-if="check(data, 'hblock')" ng-style="data.style">
+		<ng-data-blocks
+			ng-repeat="sub in data.value" 
+			style="display: inline-block;"
+			data="sub">
+		</ng-data-blocks>
+	</div>
+
 	<!-- Unavailable Types -->
 	<div ng-if="!isAvailable(data.type)">
 		Unavailable Type!
