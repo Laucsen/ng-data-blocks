@@ -6,7 +6,7 @@ angular.module('samples-module')
       title: 'Label',
       type: 'label',
       name: 'smapleLabelBlock',
-      value: 'Some awsome Label: ',
+      data: 'Some awsome Label: ',
       style: {
         color: '#110022',
         'font-size': '30px',

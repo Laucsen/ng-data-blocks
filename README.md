@@ -15,10 +15,8 @@ This link will tell more about it: https://github.com/gruntjs/grunt-contrib-comp
 
 ## TODO LIST ##
 
-1. Input[Numeric]
-2. Input[Numeric] -> Max and Min Values (With Validation)
-3. Input[Bulet] -> Like WOD Sheet, with max and min values.
-4. CheckBox
+1. Input[Bulet] -> Like WOD Sheet, with max and min values.
+2. CheckBox
 
 1. Change Values Programatically.
 2. Serialize.

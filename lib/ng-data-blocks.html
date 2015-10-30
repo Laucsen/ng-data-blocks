@@ -2,20 +2,26 @@
 
 	<!-- Images -->
 	<div ng-if="check(data, 'image')">
-		<img ng-src="{{data.value}}" ng-style="data.style">
+		<img ng-src="{{data.data}}" ng-style="data.style">
 	</div>
 
 	<div ng-if="check(data, 'label')">
-		<label ng-style="data.style">{{data.value}}</label>
+		<label ng-style="data.style">{{data.data}}</label>
 	</div>
 
 	<div ng-if="check(data, 'input')">
-		<input type="text" ng-style="data.style" ng-model="data.value">
-	</div>
+		<input 
+			type="{{data.data.type}}" 
+			ng-style="data.style" 
+			ng-model="data.data.value"
+
+			min="{{data.data.min}}"
+			max="{{data.data.max}}">
+	</div>	
 
 	<div ng-if="check(data, 'hblock')" ng-style="data.style">
 		<ng-data-blocks
-			ng-repeat="sub in data.value" 
+			ng-repeat="sub in data.data" 
 			style="display: inline-block;"
 			data="sub">
 		</ng-data-blocks>
@@ -23,16 +29,16 @@
 
 	<div ng-if="check(data, 'vblock')" ng-style="data.style">
 		<ng-data-blocks
-			ng-repeat="sub in data.value" 
+			ng-repeat="sub in data.data" 
 			data="sub">
 		</ng-data-blocks>
 	</div>
 
 	<div ng-if="check(data, 'gblock')" ng-style="data.style">
 		<fieldset>
-			<legend>{{data.value.title}}</legend>
+			<legend>{{data.data.title}}</legend>
 			<ng-data-blocks
-				data="data.value.data">
+				data="data.data.block">
 			</ng-data-blocks>
 		</fieldset>
 	</div>

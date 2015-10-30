@@ -6,11 +6,11 @@ angular.module('samples-module')
       title: 'H Block',
       type: 'hblock',
       name: 'smapleHBlock',
-      value: [{
+      data: [{
         title: 'Label',
         type: 'label',
         name: 'smapleLabelBlock',
-        value: 'Some awsome Label: ',
+        data: 'Some awsome Label: ',
         style: {
           color: '#110022',
           margin: 0
@@ -19,7 +19,10 @@ angular.module('samples-module')
         title: 'Input',
         type: 'input',
         name: 'smapleInputBlock',
-        value: 'Sample Info',
+        data: {
+          type: 'text',
+          value: 'Sample Info'
+        },
         style: {
           border: '1px solid gray',
           color: 'black',
@@ -37,7 +40,7 @@ angular.module('samples-module')
       title: 'V Block',
       type: 'vblock',
       name: 'smapleVBlock',
-      value: [],
+      data: [],
       style: {
         border: '2px solid green',
         padding: '4px'
@@ -49,9 +52,9 @@ angular.module('samples-module')
       title: 'Group Block',
       type: 'gblock',
       name: 'smapleGroupBlock',
-      value: {
+      data: {
         title: 'Sample Group Box',
-        data: {}
+        block: {}
       },
       style: {
         border: '2px solid green',
@@ -79,11 +82,11 @@ angular.module('samples-module')
       angular.copy(Example_HBlock.data, copyC);
       //----------------------------
       var vbckp = Example_VBlock;
-      vbckp.data.value.push(copyA);
-      vbckp.data.value.push(copyB);
+      vbckp.data.data.push(copyA);
+      vbckp.data.data.push(copyB);
       //----------------------------
       var gbckp = Example_GroupBlock;
-      gbckp.data.value.data = copyC;
+      gbckp.data.data.block = copyC;
       //----------------------------
 
       SamplesService.createRegion('blocks');
