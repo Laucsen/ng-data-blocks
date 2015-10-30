@@ -10,7 +10,9 @@ angular.module('samples-module')
 
       return {
         createRegion: function(reg) {
-          regions.push(reg);
+          if (regions.indexOf(reg) === -1) {
+            regions.push(reg);
+          }
         },
         getRegions: function() {
           return regions;

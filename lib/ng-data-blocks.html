@@ -21,6 +21,22 @@
 		</ng-data-blocks>
 	</div>
 
+	<div ng-if="check(data, 'vblock')" ng-style="data.style">
+		<ng-data-blocks
+			ng-repeat="sub in data.value" 
+			data="sub">
+		</ng-data-blocks>
+	</div>
+
+	<div ng-if="check(data, 'gblock')" ng-style="data.style">
+		<fieldset>
+			<legend>{{data.value.title}}</legend>
+			<ng-data-blocks
+				data="data.value.data">
+			</ng-data-blocks>
+		</fieldset>
+	</div>
+
 	<!-- Unavailable Types -->
 	<div ng-if="!isAvailable(data.type)">
 		Unavailable Type!
