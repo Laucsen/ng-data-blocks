@@ -5,7 +5,7 @@
 ### External Dependencies ###
 
 This project depends from Compass to styling.
-There are three tools that must be installed on your sistem befor start:
+There are three tools that must be installed on your system before start:
 
 1. Ruby
 2. Sass
@@ -15,15 +15,19 @@ This link will tell more about it: https://github.com/gruntjs/grunt-contrib-comp
 
 ## TODO LIST ##
 
-1. Input[Bulet] -> Like WOD Sheet, with max and min values.
+1. Input[Bullet] -> Like WOD Sheet, with max and min values.
 2. CheckBox
+3. Incremental Checkbox
 
-1. Change Values Programatically.
+1. Change Values Pragmatically.
 2. Serialize.
 3. Rebuild from JSON String.
-4. Add cusctom classes to blocks.
+4. Add custom classes to blocks.
 5. Schemas
-5. Auto generated Documentation based on schemas and more info, updationg this readme.
+6. Object Names and References to other complex structures
+7. Bounded objects, where max of one can be other object value.
+8. Expression, where a max value can be other and a operation of other value.
+7. Auto generated Documentation based on schemas and more info, updating this readme.
 
 1. Tests
 2. Build o Travis
