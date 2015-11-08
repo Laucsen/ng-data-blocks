@@ -1,0 +1,14 @@
+<div
+        class="ngdb-checkgroup"
+        ng-style="cgData.style">
+    <div
+            class="ngdb-checkgroup-base"
+            ng-class="{
+                'ngdb-checkgroup-item': cgData.data.type===undefined || cgData.data.type === 'square',
+                'ngdb-checkgroup-item-circle': cgData.data.type === 'circle',
+                'ngdb-checkgroup-item-slim-circle': cgData.data.type === 'slim-circle',
+                'ngdb-checkgroup-selected': cgData.data.value > $index
+            }"
+            ng-click="select($index)"
+            ng-repeat="r in dynamicArraySize(cgData.data.max) track by $index"></div>
+</div>

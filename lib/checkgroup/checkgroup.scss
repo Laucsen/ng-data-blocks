@@ -1,0 +1,39 @@
+.ngdb-checkgroup {
+  line-height: 0;
+  .ngdb-checkgroup-base {
+    cursor: pointer;
+    &:hover {
+      background: gray;
+    }
+  }
+  .ngdb-checkgroup-selected {
+    background: black;
+  }
+  .ngdb-checkgroup-item {
+    display: inline-block;
+    margin: 2px;
+    width: 16px;
+    height: 16px;
+    border: 1px solid black;
+  }
+  .ngdb-checkgroup-item-circle {
+    display: inline-block;
+    margin: 2px;
+    width: 16px;
+    height: 16px;
+    border-radius: 8px;
+    border: 2px solid black;
+  }
+  .ngdb-checkgroup-item-slim-circle {
+    display: inline-block;
+    margin: 2px 1px;
+    width: 16px;
+    height: 16px;
+    border-radius: 8px;
+    border: 2px solid black;
+    ////
+    -ms-transform: scale(0.85,1); /* IE 9 */
+    -webkit-transform: scale(0.85,1); /* Safari */
+    transform: scale(0.85,1);
+  }
+}

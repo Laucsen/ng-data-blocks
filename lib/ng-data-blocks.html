@@ -1,51 +1,58 @@
 <div class="ng-data-blocks">
 
-	<!-- Images -->
-	<div ng-if="check(data, 'image')">
-		<img ng-src="{{data.data}}" ng-style="data.style">
-	</div>
+    <!-- Images -->
+    <img
+            ng-if="check(data, 'image')"
+            ng-src="{{data.data}}"
+            ng-style="data.style">
 
-	<div ng-if="check(data, 'label')">
-		<label ng-style="data.style">{{data.data}}</label>
-	</div>
+    <!-- Label -->
+    <label
+            ng-if="check(data, 'label')"
+            ng-style="data.style">{{data.data}}</label>
 
-	<div ng-if="check(data, 'input')">
-		<input 
-			type="{{data.data.type}}" 
-			ng-style="data.style" 
-			ng-model="data.data.value"
+    <div ng-if="check(data, 'input')">
+        <input
+                type="{{data.data.type}}"
+                ng-style="data.style"
+                ng-model="data.data.value"
 
-			min="{{data.data.min}}"
-			max="{{data.data.max}}">
-	</div>	
+                min="{{data.data.min}}"
+                max="{{data.data.max}}">
+    </div>
 
-	<div ng-if="check(data, 'hblock')" ng-style="data.style">
-		<ng-data-blocks
-			ng-repeat="sub in data.data" 
-			style="display: inline-block;"
-			data="sub">
-		</ng-data-blocks>
-	</div>
+    <!-- Incremental Radio -->
+    <checkgroup
+            ng-if="check(data, 'checkgroup')"
+            cg-data="data"></checkgroup>
 
-	<div ng-if="check(data, 'vblock')" ng-style="data.style">
-		<ng-data-blocks
-			ng-repeat="sub in data.data" 
-			data="sub">
-		</ng-data-blocks>
-	</div>
+    <div ng-if="check(data, 'hblock')" ng-style="data.style">
+        <ng-data-blocks
+                ng-repeat="sub in data.data"
+                style="display: inline-block;"
+                data="sub">
+        </ng-data-blocks>
+    </div>
 
-	<div ng-if="check(data, 'gblock')" ng-style="data.style">
-		<fieldset>
-			<legend>{{data.data.title}}</legend>
-			<ng-data-blocks
-				data="data.data.block">
-			</ng-data-blocks>
-		</fieldset>
-	</div>
+    <div ng-if="check(data, 'vblock')" ng-style="data.style">
+        <ng-data-blocks
+                ng-repeat="sub in data.data"
+                data="sub">
+        </ng-data-blocks>
+    </div>
 
-	<!-- Unavailable Types -->
-	<div ng-if="!isAvailable(data.type)">
-		Unavailable Type!
-	</div>
+    <div ng-if="check(data, 'gblock')" ng-style="data.style">
+        <fieldset>
+            <legend>{{data.data.title}}</legend>
+            <ng-data-blocks
+                    data="data.data.block">
+            </ng-data-blocks>
+        </fieldset>
+    </div>
+
+    <!-- Unavailable Types -->
+    <div ng-if="!isAvailable(data.type)">
+        Unavailable Type!
+    </div>
 
 </div>

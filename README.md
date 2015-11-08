@@ -15,10 +15,6 @@ This link will tell more about it: https://github.com/gruntjs/grunt-contrib-comp
 
 ## TODO LIST ##
 
-1. Input[Bullet] -> Like WOD Sheet, with max and min values.
-2. CheckBox
-3. Incremental Checkbox
-
 1. Change Values Pragmatically.
 2. Serialize.
 3. Rebuild from JSON String.
@@ -28,6 +24,7 @@ This link will tell more about it: https://github.com/gruntjs/grunt-contrib-comp
 7. Bounded objects, where max of one can be other object value.
 8. Expression, where a max value can be other and a operation of other value.
 7. Auto generated Documentation based on schemas and more info, updating this readme.
+8. Visual error, like when a check group has a minimal value and user try to insert a lower value.
 
 1. Tests
 2. Build o Travis
