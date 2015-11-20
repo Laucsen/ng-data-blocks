@@ -35,6 +35,8 @@
     <!-- DEV Libraries -->
     <script src="bower_components/jsoneditor/dist/jsoneditor.min.js"></script>
     <script src="bower_components/ng-jsoneditor/ng-jsoneditor.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
     <!-- End Dev -->
 
     <!-- build:js({.tmp,app}) ng-data-blocks.js -->
@@ -56,21 +58,44 @@
     <script src="scripts/examples/2-images.js"></script>
     <script src="scripts/examples/3-blocks.js"></script>
     <script src="scripts/examples/4-checkgroup.js"></script>
+    <script src="scripts/live/live.controller.js"></script>
+    <script src="scripts/live/live.directive.js"></script>
+    <script src="scripts/live/liveexamples.controller.js"></script>
     <script src="scripts/sampleitem/sampleitem.directive.js"></script>
     <script src="scripts/sampleregion/sampleregion.controller.js"></script>
     <script src="scripts/sampleregion/sampleregion.directive.js"></script>
-    <script src="scripts/samples.controller.js"></script>
-    <script src="scripts/samples.service.js"></script>
+    <script src="scripts/samples/samples.controller.js"></script>
+    <script src="scripts/samples/samples.service.js"></script>
+    <script src="scripts/tabs/tabs.controller.js"></script>
     <script src="scripts/ng-data-blocks.examples-templates.js"></script>
     <!-- endinjector -->
 
 
+    <div ng-controller="tabs-controller" class="container">
+        <uib-tabset>
 
-    <div ng-controller="samples-controller">
-        <sample-region
-            ng-repeat="region in regions"
-            sr-data="region">
-        </sample-region>
+            <uib-tab heading="Ng Data Blocks">
+                TODO
+            </uib-tab>
+
+            <!-- Ng Data Blocks Components -->
+            <uib-tab heading="Components">
+                <div ng-controller="samples-controller">
+                    <sample-region
+                            ng-repeat="region in regions"
+                            sr-data="region">
+                    </sample-region>
+                </div>
+            </uib-tab>
+
+            <uib-tab heading="Live Samples">
+                <div ng-controller="live-examples-controller">
+                    <h2>Mage - The Awakening</h2>
+                    <live data="mage"></live>
+                </div>
+            </uib-tab>
+
+        </uib-tabset>
     </div>
 
 </body>
