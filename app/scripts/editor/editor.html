@@ -1,0 +1,28 @@
+<div ng-controller="editor-controller" class="editor">
+    <ul class="editor-ui">
+        <li
+                ng-repeat="w in widgets"
+                class="editor-ui-element"
+                dnd-draggable="w"
+                dnd-type="w.type">
+            {{w.name}}
+        </li>
+    </ul>
+
+    <div class="editor-preview">
+        <ul
+                class="editor-frame"
+                dnd-list="rootElement"
+                dnd-allowed-types="availableTypes"
+                dnd-disable-if="rootElement.length > 0"
+                dnd-dragover="edDragoverCallback(type)"
+                dnd-drop="edDropCallback(type)">
+            <li
+                    ng-repeat="element in rootElement">
+                <ng-data-blocks
+                        data="element">
+                </ng-data-blocks>
+            </li>
+        </ul>
+    </div>
+</div>

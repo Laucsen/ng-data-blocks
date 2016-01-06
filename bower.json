@@ -28,6 +28,7 @@
   "devDependencies": {
     "bootstrap": "~3.3.5",
     "ng-jsoneditor": "angular-tools/ng-jsoneditor#~1.0.0",
-    "angular-bootstrap": "~0.14.3"
+    "angular-bootstrap": "~0.14.3",
+    "angular-drag-and-drop-lists": "~1.3.0"
   }
 }

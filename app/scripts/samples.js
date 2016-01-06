@@ -5,5 +5,7 @@ angular.module('samples-module', [
     'ui.bootstrap.tabs',
     'ui.bootstrap.tpls',
 
-    'ng.jsoneditor'
+    'ng.jsoneditor',
+
+    'dndLists'
 ]);

@@ -37,6 +37,7 @@
     <script src="bower_components/ng-jsoneditor/ng-jsoneditor.js"></script>
     <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
     <script src="bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
+    <script src="bower_components/angular-drag-and-drop-lists/angular-drag-and-drop-lists.min.js"></script>
     <!-- End Dev -->
 
     <!-- build:js({.tmp,app}) ng-data-blocks.js -->
@@ -44,6 +45,7 @@
     <!-- injector:js -->
     <script src="checkgroup/checkgroup.controller.js"></script>
     <script src="checkgroup/checkgroup.js"></script>
+    <script src="ng-data-blocks-info.js"></script>
     <script src="ng-data-blocks.controller.js"></script>
     <script src="scripts/ng-data-blocks-templates.js"></script>
     <script src="scripts/ng-data-blocks.examples-templates.js"></script>
@@ -52,6 +54,7 @@
 
     <script src="scripts/samples.js"></script>
     <!-- injector:examplesjs -->
+    <script src="scripts/editor/editor.controller.js"></script>
     <script src="scripts/examples/0-label.js"></script>
     <script src="scripts/examples/1-input.js"></script>
     <script src="scripts/examples/2-images-64-largevar.js"></script>
@@ -66,12 +69,11 @@
     <script src="scripts/sampleregion/sampleregion.directive.js"></script>
     <script src="scripts/samples/samples.controller.js"></script>
     <script src="scripts/samples/samples.service.js"></script>
-    <script src="scripts/tabs/tabs.controller.js"></script>
     <script src="scripts/ng-data-blocks.examples-templates.js"></script>
     <!-- endinjector -->
 
 
-    <div ng-controller="tabs-controller" class="container">
+    <div class="container">
         <uib-tabset>
 
             <uib-tab heading="Ng Data Blocks">
@@ -93,6 +95,10 @@
                     <h2>Mage - The Awakening</h2>
                     <live data="mage"></live>
                 </div>
+            </uib-tab>
+
+            <uib-tab heading="Editor">
+                <div ng-include="'scripts/editor/editor.html'"></div>
             </uib-tab>
 
         </uib-tabset>

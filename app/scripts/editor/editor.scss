@@ -1,0 +1,51 @@
+$border: #0f0f0f;
+$default_background: #f8f8f8;
+$highlight_background: #00b3ee;
+//////////////////////////
+.editor {
+  height: 560px;
+  .editor-ui {
+    width: 20%;
+    height: 100%;
+    float: left;
+    border: 1px solid $border;
+    padding: 0px;
+    margin: 4px;
+
+    .editor-ui-element {
+      height: 32px;
+      background-color: $default_background;
+      border: 1px solid $border;
+      margin: 4px;
+      padding: 4px;
+    }
+
+    li
+    {
+      list-style-type: none;
+    }
+  }
+  .editor-preview {
+    width: 79%;
+    height: 100%;
+    float: left;
+    padding: 8px;
+    background: $default_background;
+    .editor-frame {
+      height: 100%;
+      padding: 4px;
+      background: #f0f2f5;
+      border: 1px solid $border;
+      ////////////////////////////////
+      li
+      {
+        list-style-type: none;
+      }
+    }
+    .dndDragover {
+      background: $highlight_background;
+    }
+  }
+
+}
+//////////////////////////////////////
