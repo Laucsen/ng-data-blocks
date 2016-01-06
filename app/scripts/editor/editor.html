@@ -25,4 +25,41 @@
             </li>
         </ul>
     </div>
+
+    <div class="editor-inspector">
+        <div class="editor-structure">
+            <div
+                    class="editor-structure-item"
+                    ng-class="{'active': rootElement[0].active}"
+                    ng-if="rootElement.length > 0"
+                    ng-click="rootClicked()">
+                {{rootElement[0].title}}
+            </div>
+        </div>
+
+        <div class="editor-data">
+            <div ng-if="activeElement">
+                <div ng-repeat="field in editingfields">
+                    <div class="block-title" title="{{field}}">{{field}}</div>
+                    <input
+                            type="text"
+                            class="block-body"
+                            ng-if="!isSpecial(field)"
+                            ng-disabled="!isEditable(field)"
+                            ng-model="activeElement[field]">
+
+                    <div ng-if="isSpecial(field)">
+                        <input
+                                type="text"
+                                class="block-body small"
+                                value="..."
+                                disabled="true">
+                        <button
+                            class="block-button"
+                            ng-click="runSpecial(field)">...</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
