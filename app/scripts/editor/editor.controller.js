@@ -7,8 +7,9 @@ angular.module('samples-module')
         'ng-data-blocks-info',
 
         'editor-sampler',
+        'editor-styles',
 
-        function ($scope, Info, Sampler) {
+        function ($scope, Info, Sampler, Styles) {
 
             $scope.availableTypes = Info.getAvailableComponentsTypes();
             $scope.widgets = Info.getAvailableComponents();
@@ -48,7 +49,7 @@ angular.module('samples-module')
 
             $scope.runSpecial = function(field) {
                 if (field === 'style') {
-                    console.log($scope.activeElement[field]);
+                    Styles.show($scope.activeElement);
                 }
             };
         }

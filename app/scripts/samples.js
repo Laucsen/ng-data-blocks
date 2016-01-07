@@ -3,6 +3,7 @@ angular.module('samples-module', [
 
     'ng-data-blocks',
     'ui.bootstrap.tabs',
+    'ui.bootstrap.modal',
     'ui.bootstrap.tpls',
 
     'ng.jsoneditor',
