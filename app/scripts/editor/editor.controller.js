@@ -27,8 +27,8 @@ angular.module('samples-module')
                 return lcondition && scondition;
             };
             $scope.edDropCallback = function (type) {
-                var sampled = Sampler.get(type);
-                return sampled || false;
+                var sample = Sampler.get(type);
+                return sample || false;
             };
 
             $scope.isEditable = function(field) {
@@ -45,6 +45,10 @@ angular.module('samples-module')
                 } else {
                     $scope.activeElement = undefined;
                 }
+            };
+            $scope.removeItem = function() {
+                $scope.rootElement = [];
+                $scope.activeElement = undefined;
             };
 
             $scope.runSpecial = function(field) {

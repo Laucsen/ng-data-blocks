@@ -68,6 +68,16 @@ $highlight_background: #00b3ee;
         &.active {
           background: #0b97c4;
         }
+        .item-title {
+          float: left;
+        }
+        .item-remove {
+          float: right;
+          height: 18px;
+          span {
+            top: -2px;
+          }
+        }
       }
     }
     .editor-data {

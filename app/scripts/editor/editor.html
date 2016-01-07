@@ -33,7 +33,8 @@
                     ng-class="{'active': rootElement[0].active}"
                     ng-if="rootElement.length > 0"
                     ng-click="rootClicked()">
-                {{rootElement[0].title}}
+                <div class="item-title">{{rootElement[0].title}}</div>
+                <button class="item-remove" ng-click="removeItem(0)"><span class="glyphicon glyphicon-minus"></span></button>
             </div>
         </div>
 
