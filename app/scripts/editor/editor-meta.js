@@ -67,14 +67,44 @@ angular.module('samples-module')
             };
         }
     ])
+    .service('EdCheckGroup', [
+        function() {
+            return {
+                data: {
+                    title: 'CheckGroup',
+                    type: 'checkgroup',
+                    name: '',
+                    data: {
+                        type: 'square',
+                        min: 0,
+                        max: 5,
+                        value: 1
+                    },
+                    style: {
+                        color: 'black'
+                    }
+                },
+                fields: ['title', 'type', 'name', 'data', 'style'],
+                editable: ['name', 'data'],
+                special: ['style'],
+                metadata: {
+                    type: ['square', 'slim-circle', 'circle'],
+                    value: 'number',
+                    max: 'number',
+                    min: 'number'
+                }
+            };
+        }
+    ])
     .factory('editor-meta', [
         'EdLabel',
         'EdImage',
         'EdInput',
+        'EdCheckGroup',
 
-        function (EdLabel, EdImage, EdInput) {
+        function (EdLabel, EdImage, EdInput, EdCheckGroup) {
 
-            var elements = [EdLabel, EdImage, EdInput];
+            var elements = [EdLabel, EdImage, EdInput, EdCheckGroup];
 
             function get(type) {
                 for (var i = 0; i < elements.length; i++) {
