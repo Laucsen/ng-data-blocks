@@ -96,15 +96,35 @@ angular.module('samples-module')
             };
         }
     ])
+    .service('EdHLayout', [
+        function() {
+            return {
+                data: {
+                    title: 'H Layout',
+                    type: 'hblock',
+                    name: '',
+                    data: [],
+                    style: {
+                        border: '2px solid red'
+                    }
+                },
+                fields: ['title', 'type', 'name', 'data', 'style'],
+                editable: ['name', 'data'],
+                special: ['style'],
+                metadata: 'data-block'
+            };
+        }
+    ])
     .factory('editor-meta', [
         'EdLabel',
         'EdImage',
         'EdInput',
         'EdCheckGroup',
+        'EdHLayout',
 
-        function (EdLabel, EdImage, EdInput, EdCheckGroup) {
+        function (EdLabel, EdImage, EdInput, EdCheckGroup, EdHLayout) {
 
-            var elements = [EdLabel, EdImage, EdInput, EdCheckGroup];
+            var elements = [EdLabel, EdImage, EdInput, EdCheckGroup, EdHLayout];
 
             function get(type) {
                 for (var i = 0; i < elements.length; i++) {
