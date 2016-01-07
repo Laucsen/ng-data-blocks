@@ -20,7 +20,7 @@
             <li
                     ng-repeat="element in rootElement">
                 <ng-data-blocks
-                        data="element">
+                        data="element.data">
                 </ng-data-blocks>
             </li>
         </ul>
@@ -33,23 +33,23 @@
                     ng-class="{'active': rootElement[0].active}"
                     ng-if="rootElement.length > 0"
                     ng-click="rootClicked()">
-                <div class="item-title">{{rootElement[0].title}}</div>
+                <div class="item-title">{{rootElement[0].data.title}}</div>
                 <button class="item-remove" ng-click="removeItem(0)"><span class="glyphicon glyphicon-minus"></span></button>
             </div>
         </div>
 
         <div class="editor-data">
             <div ng-if="activeElement">
-                <div ng-repeat="field in editingfields">
+                <div ng-repeat="field in activeElement.fields">
                     <div class="block-title" title="{{field}}">{{field}}</div>
                     <input
                             type="text"
                             class="block-body"
-                            ng-if="!isSpecial(field)"
-                            ng-disabled="!isEditable(field)"
-                            ng-model="activeElement[field]">
+                            ng-if="!isIn(activeElement.special, field)"
+                            ng-disabled="!isIn(activeElement.editable, field)"
+                            ng-model="activeElement.data[field]">
 
-                    <div ng-if="isSpecial(field)">
+                    <div ng-if="isIn(activeElement.special, field)">
                         <input
                                 type="text"
                                 class="block-body small"
