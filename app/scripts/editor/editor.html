@@ -42,12 +42,8 @@
             <div ng-if="activeElement">
                 <div ng-repeat="field in activeElement.fields">
                     <div class="block-title" title="{{field}}">{{field}}</div>
-                    <input
-                            type="text"
-                            class="block-body"
-                            ng-if="!isIn(activeElement.special, field)"
-                            ng-disabled="!isIn(activeElement.editable, field)"
-                            ng-model="activeElement.data[field]">
+
+                    <editor-attribute></editor-attribute>
 
                     <div ng-if="isIn(activeElement.special, field)">
                         <input

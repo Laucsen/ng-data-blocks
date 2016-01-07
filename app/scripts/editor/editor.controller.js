@@ -35,7 +35,6 @@ angular.module('samples-module')
                 $scope.rootElement[0].active = !$scope.rootElement[0].active;
                 if ($scope.rootElement[0].active) {
                     $scope.activeElement = $scope.rootElement[0];
-                    console.log($scope.activeElement);
                 } else {
                     $scope.activeElement = undefined;
                 }

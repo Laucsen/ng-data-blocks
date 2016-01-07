@@ -1,0 +1,36 @@
+<div class="editor-attribute">
+    <input
+            type="text"
+            class="block-body"
+            ng-if="!isIn(activeElement.special, field) && !isObject(activeElement.data[field])"
+            ng-disabled="!isIn(activeElement.editable, field)"
+            ng-model="activeElement.data[field]">
+
+    <div ng-if="isObject(activeElement.data[field]) && !isIn(activeElement.special, field)">
+        <input
+                type="text"
+                class="block-body"
+                disabled
+                value="...">
+        <div ng-repeat="(key, value) in activeElement.metadata">
+            <div class="block-title-attr" title="{{key}}">{{key}}</div>
+
+            <!-- String Sub Input -->
+            <input
+                    type="text"
+                    class="block-body"
+                    ng-if="value === 'string'"
+                    ng-model="activeElement.data[field][key]">
+
+            <!-- Combo Sub Input -->
+            <select
+                    class="block-select"
+                    ng-if="isArray(value)"
+                    ng-model="activeElement.data[field][key]">
+                <option ng-repeat="option in value" value="{{option}}">{{option}}</option>
+            </select>
+
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,23 @@
+.editor-attribute {
+  .block-body {
+    float: left;
+    width: 134px;
+    height: 24px;
+    &.small {
+      width: 106px;
+    }
+  }
+  .block-select {
+    height: 24px;
+    float: left;
+    width: 134px;
+  }
+  .block-title-attr {
+    border: 1px solid black;
+    width: 65px;
+    margin-left: 10px;
+    float: left;
+    height: 24px;
+  }
+}
+
